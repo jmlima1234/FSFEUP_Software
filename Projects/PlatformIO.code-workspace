@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../PlatformIO"
+		},
+		{
+			"name": "APPS2",
+			"path": "APPS2"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"random": "cpp"
+		}
+	}
+}
