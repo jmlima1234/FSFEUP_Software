@@ -8,38 +8,25 @@ void setup() {
 
   can1.begin();
   can1.setBaudRate(125000);
-  CAN_message_t msg5; // power off module
-  msg5.id = 0x02204000;
-  msg5.len = 8;
-  msg5.flags.extended = 1;
-  msg5.buf[0] = 0x10;
-  msg5.buf[1] = 0x04;
-  msg5.buf[2] = 0x00;
-  msg5.buf[3] = 0x00;
-  msg5.buf[4] = 0x00;
-  msg5.buf[5] = 0x00;
-  msg5.buf[6] = 0x00;
-  msg5.buf[7] = 0x01;
-  can1.write(msg5);
 }
 
 void loop() {
 
-  // CAN_message_t msg; // power on module
-  // msg.id = 0x02204000;
-  // msg.len = 8;
-  // msg.flags.extended = 1;
-  // msg.buf[0] = 0x10;
-  // msg.buf[1] = 0x04;
-  // msg.buf[2] = 0x00;
-  // msg.buf[3] = 0x00;
-  // msg.buf[4] = 0x00;
-  // msg.buf[5] = 0x00;
-  // msg.buf[6] = 0x00;
-  // msg.buf[7] = 0x00;
+  CAN_message_t msg; // power on module
+  msg.id = 0x02204000;
+  msg.len = 8;
+  msg.flags.extended = 1;
+  msg.buf[0] = 0x10;
+  msg.buf[1] = 0x04;
+  msg.buf[2] = 0x00;
+  msg.buf[3] = 0x00;
+  msg.buf[4] = 0x00;
+  msg.buf[5] = 0x00;
+  msg.buf[6] = 0x00;
+  msg.buf[7] = 0x00;
   
 
-  // can1.write(msg);
+  can1.write(msg);
 
   CAN_message_t msg2; // set an output reference of 200V
   msg2.flags.extended = 1;
@@ -96,9 +83,24 @@ void loop() {
     }
     Serial.print('\n');
   }
-  //Serial.println("teste");
 
-
+  Serial.println("Going to turn off in 10 seconds");
+  delay(10000);
+  
+  CAN_message_t msg5; // power off module
+  msg5.id = 0x02204000;
+  msg5.len = 8;
+  msg5.flags.extended = 1;
+  msg5.buf[0] = 0x10;
+  msg5.buf[1] = 0x04;
+  msg5.buf[2] = 0x00;
+  msg5.buf[3] = 0x00;
+  msg5.buf[4] = 0x00;
+  msg5.buf[5] = 0x00;
+  msg5.buf[6] = 0x00;
+  msg5.buf[7] = 0x01;
+  can1.write(msg5);
+  
 }
 
 
